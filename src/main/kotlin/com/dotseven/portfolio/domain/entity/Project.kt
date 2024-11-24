@@ -9,4 +9,5 @@ class Project : BaseEntity() {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
     var id: Long? = null
+
 }
