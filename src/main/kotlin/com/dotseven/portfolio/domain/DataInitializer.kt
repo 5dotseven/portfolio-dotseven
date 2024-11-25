@@ -13,7 +13,7 @@ private val logger = KotlinLogging.logger {}
 
 
 @Component
-@Profile(value = ["default"])
+@Profile(value = ["docker"])
 class DataInitializer(
     private var achievementRepository: AchievementRepository,
     private var introductionRepository: IntroductionRepository,
@@ -29,20 +29,20 @@ class DataInitializer(
         logger.info { "--initializeData 실행 위치 확인 로그--" }
 
         var achievements = mutableListOf<Achievement>(
-                Achievement(
-                    title = "2024 Catkao 해커톤 최우수상",
-                    description = "고양이 쇼핑몰 검색 서비스의 아키택처, 데이터 모델링 구현",
-                    host = "캣카오",
-                    achievedDate = LocalDate.of(2024, 11, 25),
-                    isActive = true
-                ),
-                Achievement(
-                    title = "정보처리기사",
-                    description = "자료구조, 운영체제, 알고리즘, 데이터베이스 등",
-                    host = "한국산업인력공단",
-                    achievedDate = LocalDate.of(2024, 11, 25),
-                    isActive = true
-                )
+            Achievement(
+                title = "2024 Catkao 해커톤 최우수상",
+                description = "고양이 쇼핑몰 검색 서비스의 아키택처, 데이터 모델링 구현",
+                host = "캣카오",
+                achievedDate = LocalDate.of(2024, 11, 25),
+                isActive = true
+            ),
+            Achievement(
+                title = "정보처리기사",
+                description = "자료구조, 운영체제, 알고리즘, 데이터베이스 등",
+                host = "한국산업인력공단",
+                achievedDate = LocalDate.of(2024, 11, 25),
+                isActive = true
+            )
         )
         achievementRepository.saveAll(achievements)
 
