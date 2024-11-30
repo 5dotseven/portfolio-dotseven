@@ -1,4 +1,6 @@
 package com.dotseven.portfolio.presentation.service
 
-class PrsentationService {
-}
+import org.springframework.stereotype.Service
+
+@Service
+class PresentationService

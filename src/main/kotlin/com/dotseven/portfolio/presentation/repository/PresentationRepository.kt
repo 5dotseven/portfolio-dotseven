@@ -1,4 +1,6 @@
 package com.dotseven.portfolio.presentation.repository
 
-class PresentationRepository {
-}
+import org.springframework.stereotype.Repository
+
+@Repository
+class PresentationRepository
