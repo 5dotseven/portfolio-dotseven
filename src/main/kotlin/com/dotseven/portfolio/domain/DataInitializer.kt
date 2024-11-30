@@ -13,14 +13,14 @@ private val logger = KotlinLogging.logger {}
 
 
 @Component
-@Profile(value = ["docker"])
+@Profile(value = ["default"])
 class DataInitializer(
-    private var achievementRepository: AchievementRepository,
-    private var introductionRepository: IntroductionRepository,
-    private var linkRepository: LinkRepository,
-    private var skillRepository: SkillRepository,
-    private var projectRepository: ProjectRepository,
-    private var experienceRepository: ExperienceRepository
+    private val achievementRepository: AchievementRepository,
+    private val introductionRepository: IntroductionRepository,
+    private val linkRepository: LinkRepository,
+    private val skillRepository: SkillRepository,
+    private val projectRepository: ProjectRepository,
+    private val experienceRepository: ExperienceRepository,
 ) {
 
     @PostConstruct
@@ -28,7 +28,7 @@ class DataInitializer(
 
         logger.info { "--initializeData 실행 위치 확인 로그--" }
 
-        var achievements = mutableListOf<Achievement>(
+        val achievements = mutableListOf<Achievement>(
             Achievement(
                 title = "2024 Catkao 해커톤 최우수상",
                 description = "고양이 쇼핑몰 검색 서비스의 아키택처, 데이터 모델링 구현",
@@ -49,17 +49,17 @@ class DataInitializer(
         val introductions = mutableListOf<Introduction>(
             Introduction(content = "주도적으로 문제를 찾고, 해결하는 고양이 입니다.", isActive = true),
             Introduction(content = "기술을 위한 기술이 아닌, 비지니스 문제를 풀기 위한 기술을 추구합니다.", isActive = true),
-            Introduction(content = "기존 소스를 리펙토링하여 더 좋은 구조로 개선하는 작업을 좋아합니다.", isActive = true),
+            Introduction(content = "기존 소스를 리펙토링하여 더 좋은 구조로 개선하는 작업을 좋아합니다.", isActive = true)
         )
         introductionRepository.saveAll(introductions)
 
         val links = mutableListOf<Link>(
             Link(name = "Github", content = "https://github.com/5dotseven", isActive = true),
-            Link(name = "blog", content = "https://velog.io/@5dotseven/posts", isActive = true),
+            Link(name = "blog", content = "https://velog.io/@5dotseven/posts", isActive = true)
         )
         linkRepository.saveAll(links)
 
-        var experience1 = Experience(
+        val experience1 = Experience(
             title = "수원대학교",
             description = "융합화학산업",
             startYear = 2015,
@@ -74,7 +74,7 @@ class DataInitializer(
             )
         )
 
-        var experience2 = Experience(
+        val experience2 = Experience(
             title = "웨인테크놀로지",
             description = "핀테크개발자",
             startYear = 2024,
@@ -91,14 +91,15 @@ class DataInitializer(
         )
         experienceRepository.saveAll(mutableListOf(experience1, experience2))
 
-        var java = Skill(name = "Java", type = SkillType.LANGUAGE.name, isActive = true)
-        var php = Skill(name = "Php", type = SkillType.LANGUAGE.name, isActive = true)
-        var spring = Skill(name = "Spring", type = SkillType.FRAMEWORK.name, isActive = true)
-        var laravel = Skill(name = "Laravel", type = SkillType.FRAMEWORK.name, isActive = true)
-        var mysql = Skill(name = "MySQL", type = SkillType.DATABASE.name, isActive = true)
-        var oracleDB = Skill(name = "oracleDB", type = SkillType.DATABASE.name, isActive = true)
-        var redis = Skill(name = "redis", type = SkillType.DATABASE.name, isActive = true)
-        skillRepository.saveAll(mutableListOf(java, php, spring, laravel, mysql, oracleDB))
+        val java = Skill(name = "Java", type = SkillType.LANGUAGE.name, isActive = true)
+        val php = Skill(name = "Php", type = SkillType.LANGUAGE.name, isActive = true)
+        val spring = Skill(name = "Spring", type = SkillType.FRAMEWORK.name, isActive = true)
+        val laravel = Skill(name = "Laravel", type = SkillType.FRAMEWORK.name, isActive = true)
+        val mysql = Skill(name = "MySQL", type = SkillType.DATABASE.name, isActive = true)
+        val oracleDB = Skill(name = "oracleDB", type = SkillType.DATABASE.name, isActive = true)
+        val redis = Skill(name = "redis", type = SkillType.DATABASE.name, isActive = true)
+
+        skillRepository.saveAll(mutableListOf(java, php, spring, laravel, mysql, oracleDB, redis))
 
         val project1 = Project(
             name = "SANTA(위치기반 등산 모임 서비스)",
@@ -112,7 +113,7 @@ class DataInitializer(
         project1.addDetails(
             mutableListOf(
                 ProjectDetail(content = "test", url = null, isActive = true),
-                ProjectDetail(content = "test2", url = null, isActive = true),
+                ProjectDetail(content = "test2", url = null, isActive = true)
             )
         )
         project1.skills.addAll(
@@ -120,7 +121,7 @@ class DataInitializer(
                 ProjectSkill(project = project1, skill = java),
                 ProjectSkill(project = project1, skill = spring),
                 ProjectSkill(project = project1, skill = mysql),
-                ProjectSkill(project = project1, skill = redis),
+                ProjectSkill(project = project1, skill = redis)
             )
         )
 
@@ -136,14 +137,14 @@ class DataInitializer(
         project2.addDetails(
             mutableListOf(
                 ProjectDetail(content = "test3", url = null, isActive = true),
-                ProjectDetail(content = "test4", url = null, isActive = true),
+                ProjectDetail(content = "test4", url = null, isActive = true)
             )
         )
         project2.skills.addAll(
             mutableListOf(
                 ProjectSkill(project = project2, skill = java),
                 ProjectSkill(project = project2, skill = spring),
-                ProjectSkill(project = project2, skill = mysql),
+                ProjectSkill(project = project2, skill = mysql)
             )
         )
         projectRepository.saveAll(mutableListOf(project1, project2))
