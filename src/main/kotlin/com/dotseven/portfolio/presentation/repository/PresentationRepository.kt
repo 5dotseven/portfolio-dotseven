@@ -11,7 +11,7 @@ class PresentationRepository(
     private val introductionRepository: IntroductionRepository,
     private val linkRepository: LinkRepository,
     private val projectRepository: ProjectRepository,
-    private val skillRepository: SkillRepository
+    private val skillRepository: SkillRepository,
 ) {
     fun getActiveAchievements(): List<Achievement> {
         return achievementRepository.findAllByIsActive(true)
