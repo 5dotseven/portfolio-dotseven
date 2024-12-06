@@ -7,7 +7,7 @@ import jakarta.persistence.*
 class Skill(
     name: String,
     type: String,
-    isActive: Boolean
+    isActive: Boolean,
 ) : BaseEntity() {
 
     @Id
@@ -22,4 +22,8 @@ class Skill(
     var type: SkillType = SkillType.valueOf(type)
 
     var isActive: Boolean = isActive
+
+    override fun toString(): String {
+        return "Skill(id=$id, name='$name', type=$type, isActive=$isActive)"
+    }
 }

@@ -5,6 +5,7 @@ import com.dotseven.portfolio.presentation.service.PresentationService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
+import java.util.*
 
 @Controller
 class PresentationViewController(
@@ -29,8 +30,15 @@ class PresentationViewController(
     @GetMapping("/resume")
     fun resume(model: Model): String {
         val resume = presentationService.getResume()
+        val groupedSkills = resume.skills.groupBy { it.type }
+
         model.addAttribute("resume", resume)
         model.addAttribute("skillTypes", SkillType.values())
+        model.addAttribute("groupedSkills", groupedSkills)
+
+        val values = Arrays.toString(SkillType.values())
+        println("스킬타입: $values")
+        println("그룹스킬: $groupedSkills.keys")
 
         return "presentation/resume"
     }

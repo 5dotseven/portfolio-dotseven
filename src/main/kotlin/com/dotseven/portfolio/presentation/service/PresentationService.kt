@@ -32,6 +32,7 @@ class PresentationService(
         val experiences = presentationRepository.getActiveExperiences()
         val achievements = presentationRepository.getActiveAchievements()
         val skills = presentationRepository.getActiveSkills()
+        println("스킬: $skills")
 
         return ResumeDTO(
             experiences = experiences,
