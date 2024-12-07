@@ -14,7 +14,7 @@
             <div class="col-lg-8">
                 <div class="lead fw-bolder" th:text="${project.name}">Web Developer</div>
                 <p></p>
-                <div class="small" th:text="${project.description}">Lorem ipsum dolor
+                <div class="small" th:text="${project.description}">Lorem ipsum dolor</div>
                 <p></p>
                 <th:block th:each="detail : ${project.details}">
                     <div class="small" th:if="${#strings.isEmpty(detail.url)}" th:text="|* ${detail.content}|">Lorem ipsum dolor sit amet  consectetur adipisicing elit.</div>
